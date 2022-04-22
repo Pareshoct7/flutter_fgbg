@@ -3,19 +3,17 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
-enum FGBGType { foreground, background, pause, resume }
+enum FGBGType {
+  foreground,
+  background,
+}
 
 class FGBGEvents {
   static const _channel = EventChannel("com.ajinasokan.flutter_fgbg/events");
 
   static Stream<FGBGType> get stream =>
-      _channel.receiveBroadcastStream().map((event) {
-        if (event == "foreground") return FGBGType.foreground;
-        else if (event == "pause") return FGBGType.pause;
-        else if (event == "resume") return FGBGType.resume;
-
-        return FGBGType.background;
-      });
+      _channel.receiveBroadcastStream().map((event) =>
+          event == "foreground" ? FGBGType.foreground : FGBGType.background);
 }
 
 class FGBGNotifier extends StatefulWidget {

@@ -47,20 +47,6 @@ public class FlutterFGBGPlugin implements FlutterPlugin, ActivityAware, Lifecycl
     }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-  void onAppPause() {
-    if (lifecycleSink != null) {
-      lifecycleSink.success("pause");
-    }
-  }
-
-  @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-  void onAppResume() {
-    if (lifecycleSink != null) {
-      lifecycleSink.success("resume");
-    }
-  }
-
   @OnLifecycleEvent(Lifecycle.Event.ON_START)
   void onAppForegrounded() {
     if (lifecycleSink != null) {
